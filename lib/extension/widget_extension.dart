@@ -33,3 +33,11 @@ extension ThemeExtension on Widget {
     return Theme(data: data, child: this);
   }
 }
+
+extension ScrollExtension on Widget {
+  Widget scrollable() {
+    return SingleChildScrollView(
+      child: this,
+    );
+  }
+}

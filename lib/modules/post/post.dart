@@ -29,6 +29,7 @@ class PostPage extends StatelessWidget {
             },
           ).size(height: browserHeight),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 postModel.post?.title ?? "",
@@ -42,7 +43,7 @@ class PostPage extends StatelessWidget {
             ],
           ).padding(left: 16, top: 16, right: 16, bottom: 16),
         ],
-      ),
+      ).scrollable(),
     );
   }
 }
