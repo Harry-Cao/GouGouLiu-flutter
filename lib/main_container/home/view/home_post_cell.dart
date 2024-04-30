@@ -1,23 +1,26 @@
 import 'dart:math';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gougouliu_flutter/extension/widget_extension.dart';
-import 'package:gougouliu_flutter/modules/home/model/home_post_model.dart';
+import 'package:gougouliu_flutter/main_container/home/model/home_post_model.dart';
 
 class HomePostCell extends StatelessWidget {
   final HomePostModel postModel;
-  const HomePostCell({super.key, required this.postModel});
+  final void Function() onTap;
+  const HomePostCell({super.key, required this.postModel, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: () => debugPrint(postModel.post?.title ?? ""),
+        onTap: onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Ink.image(
-              image: NetworkImage(postModel.post?.coverImageUrl ?? ""),
+              image: CachedNetworkImageProvider(
+                  postModel.post?.coverImageUrl ?? ""),
               fit: BoxFit.cover,
               child: Container(),
             ).size(height: Random().nextDouble() * 100 + 200),
@@ -30,8 +33,8 @@ class HomePostCell extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                              backgroundImage:
-                                  NetworkImage(postModel.user?.avatarUrl ?? ""))
+                              backgroundImage: CachedNetworkImageProvider(
+                                  postModel.user?.avatarUrl ?? ""))
                           .size(width: 20, height: 20)
                           .padding(right: 6),
                       Text(

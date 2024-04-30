@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gougouliu_flutter/main_container.dart';
+import 'package:gougouliu_flutter/main_container/main_container.dart';
 
 void main() {
   runApp(const MyApp());

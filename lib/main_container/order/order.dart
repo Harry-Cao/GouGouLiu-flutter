@@ -5,6 +5,10 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("order");
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Order"),
+      ),
+    );
   }
 }

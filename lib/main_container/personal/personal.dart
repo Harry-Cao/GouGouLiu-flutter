@@ -5,6 +5,10 @@ class PersonalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("personal");
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Personal"),
+      ),
+    );
   }
 }

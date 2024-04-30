@@ -1,10 +1,10 @@
 import 'package:gougouliu_flutter/extension/widget_extension.dart';
-import 'package:gougouliu_flutter/modules/message/message.dart';
-import 'package:gougouliu_flutter/modules/order/order.dart';
-import 'package:gougouliu_flutter/modules/personal/personal.dart';
-import 'package:gougouliu_flutter/modules/publish/publish.dart';
+import 'package:gougouliu_flutter/main_container/message/message.dart';
+import 'package:gougouliu_flutter/main_container/order/order.dart';
+import 'package:gougouliu_flutter/main_container/personal/personal.dart';
+import 'package:gougouliu_flutter/main_container/publish/publish.dart';
 import 'package:flutter/material.dart';
-import 'package:gougouliu_flutter/modules/home/home.dart';
+import 'package:gougouliu_flutter/main_container/home/home.dart';
 
 class MainContainer extends StatefulWidget {
   const MainContainer({super.key});
@@ -53,10 +53,6 @@ class _MainContainerState extends State<MainContainer> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text("GouGouLiu"),
-      ),
       body: Center(
         child: IndexedStack(index: _currentIndex, children: pages),
       ),
