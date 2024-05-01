@@ -11,11 +11,10 @@ class HomePageViewModel extends ChangeNotifier {
       final response =
           await http.get(Uri.parse('http://192.168.0.211:8888/api/home/post'));
       if (response.statusCode == 200) {
-        Map<String, dynamic> data = jsonDecode(response.body);
-        if (data["data"] != null) {
-          List<HomePostModel> posts = (data["data"] as List)
-              .map((e) => HomePostModel.fromJson(e))
-              .toList();
+        final json = jsonDecode(response.body);
+        if (json case {"data": List objs}) {
+          List<HomePostModel> posts =
+              objs.map((e) => HomePostModel.fromJson(e)).toList();
           allPosts = posts;
           notifyListeners();
         }
