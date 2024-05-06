@@ -1,3 +1,5 @@
+import 'package:gougouliu_flutter/manager/user_manager/model/user_model.dart';
+
 class HomePostModel {
   final UserModel? user;
   final PostModel? post;
@@ -6,24 +8,9 @@ class HomePostModel {
 
   factory HomePostModel.fromJson(Map<String, dynamic> json) {
     return HomePostModel(
-        user: UserModel.fromJson(json['user']),
-        post: PostModel.fromJson(json["post"]));
-  }
-}
-
-class UserModel {
-  final String? userId;
-  final String? userName;
-  final String? avatarUrl;
-
-  UserModel(
-      {required this.userId, required this.userName, required this.avatarUrl});
-
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-        userId: json['userId'],
-        userName: json['userName'],
-        avatarUrl: json['avatarUrl']);
+      user: UserModel.fromJson(json['user']),
+      post: PostModel.fromJson(json["post"]),
+    );
   }
 }
 
