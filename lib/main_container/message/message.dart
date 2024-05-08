@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gougouliu_flutter/database/database.dart';
-import 'package:gougouliu_flutter/database/extension/database_message.dart';
-import 'package:gougouliu_flutter/main_container/message/model/message_model.dart';
 import 'package:gougouliu_flutter/main_container/message/view/message_cell.dart';
 import 'package:gougouliu_flutter/main_container/message/view_model/message_view_model.dart';
+import 'package:gougouliu_flutter/modules/chat_room/chat_room_page.dart';
 import 'package:provider/provider.dart';
 
 class MessagePage extends StatelessWidget {
@@ -26,17 +24,20 @@ class MessagePage extends StatelessWidget {
                 return MessageCell(
                   messageModel: messageModel,
                   user: user,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ChatRoomPage(
+                        messageModel: messageModel,
+                        user: user,
+                      ),
+                    ),
+                  ),
                 );
               },
             );
           },
         ),
-        floatingActionButton: IconButton(
-            onPressed: () {
-              MessageModel model = MessageModel(userId: "17137323356473014");
-              DataBase.shared.addMessage(model);
-            },
-            icon: const Icon(Icons.add)),
       ),
     );
   }

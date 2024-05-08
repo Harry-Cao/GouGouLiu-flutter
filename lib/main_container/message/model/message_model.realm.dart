@@ -9,10 +9,10 @@ part of 'message_model.dart';
 // ignore_for_file: type=lint
 class ChatModel extends _ChatModel
     with RealmEntity, RealmObjectBase, RealmObject {
-  ChatModel({
-    DateTime? createTime,
-    String? typeString,
-    String? userId,
+  ChatModel(
+    DateTime createTime,
+    String typeString,
+    String userId, {
     String? text,
     String? photoUrl,
   }) {
@@ -26,23 +26,23 @@ class ChatModel extends _ChatModel
   ChatModel._();
 
   @override
-  DateTime? get createTime =>
-      RealmObjectBase.get<DateTime>(this, 'createTime') as DateTime?;
+  DateTime get createTime =>
+      RealmObjectBase.get<DateTime>(this, 'createTime') as DateTime;
   @override
-  set createTime(DateTime? value) =>
+  set createTime(DateTime value) =>
       RealmObjectBase.set(this, 'createTime', value);
 
   @override
-  String? get typeString =>
-      RealmObjectBase.get<String>(this, 'typeString') as String?;
+  String get typeString =>
+      RealmObjectBase.get<String>(this, 'typeString') as String;
   @override
-  set typeString(String? value) =>
+  set typeString(String value) =>
       RealmObjectBase.set(this, 'typeString', value);
 
   @override
-  String? get userId => RealmObjectBase.get<String>(this, 'userId') as String?;
+  String get userId => RealmObjectBase.get<String>(this, 'userId') as String;
   @override
-  set userId(String? value) => RealmObjectBase.set(this, 'userId', value);
+  set userId(String value) => RealmObjectBase.set(this, 'userId', value);
 
   @override
   String? get text => RealmObjectBase.get<String>(this, 'text') as String?;
@@ -83,9 +83,9 @@ class ChatModel extends _ChatModel
         'photoUrl': EJsonValue photoUrl,
       } =>
         ChatModel(
-          createTime: fromEJson(createTime),
-          typeString: fromEJson(typeString),
-          userId: fromEJson(userId),
+          fromEJson(createTime),
+          fromEJson(typeString),
+          fromEJson(userId),
           text: fromEJson(text),
           photoUrl: fromEJson(photoUrl),
         ),
@@ -97,9 +97,9 @@ class ChatModel extends _ChatModel
     RealmObjectBase.registerFactory(ChatModel._);
     register(_toEJson, _fromEJson);
     return SchemaObject(ObjectType.realmObject, ChatModel, 'ChatModel', [
-      SchemaProperty('createTime', RealmPropertyType.timestamp, optional: true),
-      SchemaProperty('typeString', RealmPropertyType.string, optional: true),
-      SchemaProperty('userId', RealmPropertyType.string, optional: true),
+      SchemaProperty('createTime', RealmPropertyType.timestamp),
+      SchemaProperty('typeString', RealmPropertyType.string),
+      SchemaProperty('userId', RealmPropertyType.string),
       SchemaProperty('text', RealmPropertyType.string, optional: true),
       SchemaProperty('photoUrl', RealmPropertyType.string, optional: true),
     ]);

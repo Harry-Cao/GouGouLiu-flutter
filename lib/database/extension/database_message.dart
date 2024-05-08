@@ -7,6 +7,15 @@ extension MessageExtension on DataBase {
     return realm.all<MessageModel>();
   }
 
+  MessageModel? fetchMessageModel(String ownerId, String userId) {
+    final results = realm.query<MessageModel>(
+        "ownerId == \$0 AND userId == \$1", [ownerId, userId]).toList();
+    if (results case [MessageModel messageModel, ...]) {
+      return messageModel;
+    }
+    return null;
+  }
+
   void addMessage(MessageModel message) {
     realm.write(() => realm.add(message));
   }

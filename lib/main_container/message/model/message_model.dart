@@ -3,14 +3,14 @@ part 'message_model.realm.dart';
 
 @RealmModel()
 class _ChatModel {
-  late DateTime? createTime;
-  late String? typeString;
-  ChatType get type => ChatType.values.byName(typeString ?? ChatType.text.name);
+  late DateTime createTime;
+  late String typeString;
+  ChatType get type => ChatType.values.byName(typeString);
   set type(ChatType type) {
     typeString = type.name;
   }
 
-  late String? userId;
+  late String userId;
   late String? text;
   late String? photoUrl;
 }
